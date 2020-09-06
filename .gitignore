@@ -1,3 +1,5 @@
 
 /TaxiWeb/bin/TaxiWeb.dll.config
 /.vs/TaxiWeb/v16/.suo
+/TaxiWeb/obj/Debug/TaxiWeb.csprojAssemblyReference.cache
+*.suo
