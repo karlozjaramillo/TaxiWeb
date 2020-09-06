@@ -4,4 +4,5 @@
     $('.sidenav').sidenav();
     $('.parallax').parallax();
     $('.tooltipped').tooltip();
+    $('.modal').modal();
 });
