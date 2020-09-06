@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - TaxiWeb</title>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/materialize.js"></script>
+    <link href="~/Content/materialize.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="~/Content/taxi_style.css" rel="stylesheet" />
+    <script src="~/Scripts/general.js"></script>
+</head>
+<body>
+    <nav>
+        <div class="nav-wrapper yellow">
+            <a href="#" class="brand-logo">
+                <img src="~/Images/logo taxi.png" />
+            </a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li data-target="slide-out" class="sidenav-trigger">
+                    <a class="tooltipped" data-position="bottom" data-tooltip="Presióname" href="#">
+                        <i class="material-icons">apps</i>
+                    </a>
+                </li>                
+                <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                <li>@Html.ActionLink("Conductor", "Index", "Conductor")</li>
+                <li>@Html.ActionLink("Vehículo", "Index", "Vehiculo")</li>
+                <li>@Html.ActionLink("Afiliación", "Index", "Afiliacion")</li>
+            </ul>
+        </div>
+    </nav>
+    <ul id="slide-out" class="sidenav">
+        <li>
+            <div class="user-view">
+                <div class="background">
+                    <img src="~/Images/taxiBackground.png" />
+                </div>
+                <br /><br />
+            </div>
+        </li>
+        <li>@Html.ActionLink("Afiliarme", "Index", "Afiliacion")</li>
+        <li><div class="divider"></div></li>
+        <li>
+            <div class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="~/Images/loginBackground.jpg" />
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">Iniciar Sesión<i class="material-icons right">input</i></span>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">Identifícate<i class="material-icons right">close</i></span>
+                    <form action="/" method="post">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="usuario" type="text" class="validate">
+                                <label for="usuario">Usuario</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="password" type="password" class="validate">
+                                <label for="password">Contraseña</label>
+                            </div>
+                            <div>
+                                <input class="btn" type="submit" name="name" value="Ingresar" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </li>
+        <li>@Html.ActionLink("Conductor", "Index", "Conductor")</li>
+        <li>@Html.ActionLink("Vehículo", "Index", "Vehiculo")</li>
+        <li>@Html.ActionLink("Afiliación", "Index", "Afiliacion")</li>
+    </ul>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - TaxiWeb</p>
+        </footer>
+    </div>
+</body>
+</html>
