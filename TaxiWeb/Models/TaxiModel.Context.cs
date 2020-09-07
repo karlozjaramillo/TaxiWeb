@@ -28,5 +28,6 @@ namespace TaxiWeb.Models
         public virtual DbSet<Conductor> Conductor { get; set; }
         public virtual DbSet<Vehiculo> Vehiculo { get; set; }
         public virtual DbSet<Afiliacion> Afiliacion { get; set; }
+        public virtual DbSet<Clase> Clase { get; set; }
     }
 }

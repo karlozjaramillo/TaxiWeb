@@ -8,7 +8,9 @@
         <EntityTypeShape EntityType="TaxiWebModel.Conductor" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="TaxiWebModel.Vehiculo" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="TaxiWebModel.FK_Vehiculo_Conductor" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="TaxiWebModel.Afiliacion" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="TaxiWebModel.Afiliacion" Width="1.5" PointX="5.125" PointY="1" />
+        <EntityTypeShape EntityType="TaxiWebModel.Clase" Width="1.5" PointX="0.75" PointY="4.125" />
+        <AssociationConnector Association="TaxiWebModel.FK_Clase_Conductor" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

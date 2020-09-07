@@ -18,15 +18,20 @@ namespace TaxiWeb.Models
         public Conductor()
         {
             this.Vehiculo = new HashSet<Vehiculo>();
+            this.Clase = new HashSet<Clase>();
         }
     
         public long Id { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string Cedula { get; set; }
-        public Nullable<System.DateTime> FechaNacimiento { get; set; }
+        public System.DateTime FechaNacimiento { get; set; }
+        public string LicenciaConduccion { get; set; }
+        public System.DateTime ExpiracionLicencia { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Vehiculo> Vehiculo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Clase> Clase { get; set; }
     }
 }
