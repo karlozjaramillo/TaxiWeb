@@ -4,6 +4,8 @@
     <EntitySetMapping Name="Conductor">
       <EntityTypeMapping TypeName="TaxiWebModel.Conductor">
         <MappingFragment StoreEntitySet="Conductor">
+          <ScalarProperty Name="ExpiracionLicencia" ColumnName="ExpiracionLicencia" />
+          <ScalarProperty Name="LicenciaConduccion" ColumnName="LicenciaConduccion" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="Apellido" ColumnName="Apellido" />
@@ -32,6 +34,18 @@
           <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
           <ScalarProperty Name="Cedula" ColumnName="Cedula" />
           <ScalarProperty Name="FechaRadicado" ColumnName="FechaRadicado" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clase">
+      <EntityTypeMapping TypeName="TaxiWebModel.Clase">
+        <MappingFragment StoreEntitySet="Clase">
+          <ScalarProperty Name="HoraFin" ColumnName="HoraFin" />
+          <ScalarProperty Name="HoraInicio" ColumnName="HoraInicio" />
+          <ScalarProperty Name="NombreInstructor" ColumnName="NombreInstructor" />
+          <ScalarProperty Name="FechaClase" ColumnName="FechaClase" />
+          <ScalarProperty Name="IdConductor" ColumnName="IdConductor" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

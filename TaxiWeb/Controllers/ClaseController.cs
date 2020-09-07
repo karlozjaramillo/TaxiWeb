@@ -10,107 +10,112 @@ using TaxiWeb.Models;
 
 namespace TaxiWeb.Controllers
 {
-    public class ConductorController : Controller
+    public class ClaseController : Controller
     {
         private TaxiWebEntities db = new TaxiWebEntities();
 
-        // GET: Conductor
+        // GET: Clase
         public ActionResult Index()
         {
-            return View(db.Conductor.ToList());
+            var clase = db.Clase.Include(c => c.Conductor);
+            return View(clase.ToList());
         }
 
-        // GET: Conductor/Details/5
+        // GET: Clase/Details/5
         public ActionResult Details(long? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Conductor conductor = db.Conductor.Find(id);
-            if (conductor == null)
+            Clase clase = db.Clase.Find(id);
+            if (clase == null)
             {
                 return HttpNotFound();
             }
-            return View(conductor);
+            return View(clase);
         }
 
-        // GET: Conductor/Create
+        // GET: Clase/Create
         public ActionResult Create()
         {
+            ViewBag.IdConductor = new SelectList(db.Conductor, "Id", "Nombre");
             return View();
         }
 
-        // POST: Conductor/Create
+        // POST: Clase/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nombre,Apellido,Cedula,FechaNacimiento,LicenciaConduccion,ExpiracionLicencia")] Conductor conductor)
+        public ActionResult Create([Bind(Include = "Id,IdConductor,FechaClase,NombreInstructor,HoraInicio,HoraFin")] Clase clase)
         {
             if (ModelState.IsValid)
             {
-                db.Conductor.Add(conductor);
+                db.Clase.Add(clase);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(conductor);
+            ViewBag.IdConductor = new SelectList(db.Conductor, "Id", "Nombre", clase.IdConductor);
+            return View(clase);
         }
 
-        // GET: Conductor/Edit/5
+        // GET: Clase/Edit/5
         public ActionResult Edit(long? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Conductor conductor = db.Conductor.Find(id);
-            if (conductor == null)
+            Clase clase = db.Clase.Find(id);
+            if (clase == null)
             {
                 return HttpNotFound();
             }
-            return View(conductor);
+            ViewBag.IdConductor = new SelectList(db.Conductor, "Id", "Nombre", clase.IdConductor);
+            return View(clase);
         }
 
-        // POST: Conductor/Edit/5
+        // POST: Clase/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nombre,Apellido,Cedula,FechaNacimiento,LicenciaConduccion,ExpiracionLicencia")] Conductor conductor)
+        public ActionResult Edit([Bind(Include = "Id,IdConductor,FechaClase,NombreInstructor,HoraInicio,HoraFin")] Clase clase)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(conductor).State = EntityState.Modified;
+                db.Entry(clase).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(conductor);
+            ViewBag.IdConductor = new SelectList(db.Conductor, "Id", "Nombre", clase.IdConductor);
+            return View(clase);
         }
 
-        // GET: Conductor/Delete/5
+        // GET: Clase/Delete/5
         public ActionResult Delete(long? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Conductor conductor = db.Conductor.Find(id);
-            if (conductor == null)
+            Clase clase = db.Clase.Find(id);
+            if (clase == null)
             {
                 return HttpNotFound();
             }
-            return View(conductor);
+            return View(clase);
         }
 
-        // POST: Conductor/Delete/5
+        // POST: Clase/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(long id)
         {
-            Conductor conductor = db.Conductor.Find(id);
-            db.Conductor.Remove(conductor);
+            Clase clase = db.Clase.Find(id);
+            db.Clase.Remove(clase);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

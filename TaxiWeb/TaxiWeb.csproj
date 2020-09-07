@@ -129,6 +129,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AfiliacionController.cs" />
+    <Compile Include="Controllers\ClaseController.cs" />
     <Compile Include="Controllers\ConductorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\VehiculoController.cs" />
@@ -136,6 +137,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Afiliacion.cs">
+      <DependentUpon>TaxiModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Clase.cs">
       <DependentUpon>TaxiModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Conductor.cs">
@@ -227,6 +231,11 @@
     <Content Include="Views\Afiliacion\Details.cshtml" />
     <Content Include="Views\Afiliacion\Edit.cshtml" />
     <Content Include="Views\Afiliacion\Index.cshtml" />
+    <Content Include="Views\Clase\Create.cshtml" />
+    <Content Include="Views\Clase\Delete.cshtml" />
+    <Content Include="Views\Clase\Details.cshtml" />
+    <Content Include="Views\Clase\Edit.cshtml" />
+    <Content Include="Views\Clase\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
