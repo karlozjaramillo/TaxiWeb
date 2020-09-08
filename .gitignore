@@ -3,3 +3,10 @@
 /.vs/TaxiWeb/v16/.suo
 /TaxiWeb/obj/Debug/TaxiWeb.csprojAssemblyReference.cache
 *.suo
+*.pdb
+*.user
+*.orig
+*.zip
+*.dll
+**/bin/*
+**/obj/*
