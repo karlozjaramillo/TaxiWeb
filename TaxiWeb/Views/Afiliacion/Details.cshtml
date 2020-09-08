@@ -1,17 +1,17 @@
 ﻿@model TaxiWeb.Models.Afiliacion
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalles";
 }
 
-<h2>Details</h2>
+    <h2>@ViewBag.Title</h2>
 
 <div>
-    <h4>Afiliacion</h4>
+    <h4>Afiliación</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.FechaRadicado)
+            @Html.DisplayName("Fecha de Radicado")
         </dt>
 
         <dd>
@@ -19,7 +19,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Cedula)
+            @Html.DisplayName("Cédula")
         </dt>
 
         <dd>
@@ -27,7 +27,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NombreCompleto)
+            @Html.DisplayName("Nombre Completo")
         </dt>
 
         <dd>
@@ -47,12 +47,12 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Valor)
+            $@Html.DisplayFor(model => model.Valor)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Regresar", "Index")
 </p>

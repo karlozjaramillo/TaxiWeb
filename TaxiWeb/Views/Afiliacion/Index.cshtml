@@ -12,13 +12,13 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.FechaRadicado)
+            @Html.DisplayName("Fecha de Radicado")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Cedula)
+            @Html.DisplayName("Cédula")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NombreCompleto)
+            @Html.DisplayName("Nombre Completo")
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Edad)
@@ -32,7 +32,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.FechaRadicado)
+            @item.FechaRadicado.ToString("dd/MM/yyyy")
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Cedula)
@@ -44,7 +44,7 @@
             @Html.DisplayFor(modelItem => item.Edad)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Valor)
+            $@Html.DisplayFor(modelItem => item.Valor)
         </td>
         <td id="icons">
             @Html.ActionLink("create", "Edit", new { id = item.Id }, new { @class = "material-icons" })
