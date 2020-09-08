@@ -5,4 +5,5 @@
     $('.parallax').parallax();
     $('.tooltipped').tooltip();
     $('.modal').modal();
+    $('.timepicker').timepicker();
 });
