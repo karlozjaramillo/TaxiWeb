@@ -19,8 +19,8 @@
     <Property Name="IdConductor" Type="bigint" Nullable="false" />
     <Property Name="FechaClase" Type="date" Nullable="false" />
     <Property Name="NombreInstructor" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="HoraInicio" Type="time" Precision="0" Nullable="false" />
-    <Property Name="HoraFin" Type="time" Precision="0" Nullable="false" />
+    <Property Name="HoraInicio" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="HoraFin" Type="varchar" MaxLength="10" Nullable="false" />
   </EntityType>
   <EntityType Name="Conductor">
     <Key>

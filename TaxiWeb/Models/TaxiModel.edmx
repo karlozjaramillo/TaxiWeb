@@ -24,8 +24,8 @@
           <Property Name="IdConductor" Type="bigint" Nullable="false" />
           <Property Name="FechaClase" Type="date" Nullable="false" />
           <Property Name="NombreInstructor" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="HoraInicio" Type="time" Precision="0" Nullable="false" />
-          <Property Name="HoraFin" Type="time" Precision="0" Nullable="false" />
+          <Property Name="HoraInicio" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="HoraFin" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <EntityType Name="Conductor">
           <Key>
@@ -163,8 +163,8 @@
           <Property Name="IdConductor" Type="Int64" Nullable="false" />
           <Property Name="FechaClase" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="NombreInstructor" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="HoraInicio" Type="Time" Nullable="false" Precision="0" />
-          <Property Name="HoraFin" Type="Time" Nullable="false" Precision="0" />
+          <Property Name="HoraInicio" Type="String" Nullable="false" />
+          <Property Name="HoraFin" Type="String" Nullable="false" />
           <NavigationProperty Name="Conductor" Relationship="TaxiWebModel.FK_Clase_Conductor" FromRole="Clase" ToRole="Conductor" />
         </EntityType>
         <Association Name="FK_Clase_Conductor">
