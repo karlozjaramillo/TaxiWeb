@@ -39,7 +39,13 @@ namespace TaxiWeb.Controllers
         // GET: Clase/Create
         public ActionResult Create()
         {
-            ViewBag.IdConductor = new SelectList(db.Conductor, "Id", "Nombre");
+            var conductores = (from conductor in db.Conductor
+                               select new
+                               {
+                                   Id = conductor.Id,
+                                   nombreCompleto = conductor.Nombre + " " + conductor.Apellido
+                               });
+            ViewBag.IdConductor = new SelectList(conductores, "Id", "nombreCompleto");
             return View();
         }
 

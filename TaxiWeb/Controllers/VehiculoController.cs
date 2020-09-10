@@ -40,9 +40,10 @@ namespace TaxiWeb.Controllers
         public ActionResult Create()
         {
             var conductores = (from conductor in db.Conductor
-                               select new { 
-                               Id = conductor.Id,
-                               nombreCompleto = conductor.Nombre + " " + conductor.Apellido
+                               select new
+                               {
+                                   Id = conductor.Id,
+                                   nombreCompleto = conductor.Nombre + " " + conductor.Apellido
                                });
             ViewBag.IdConductor = new SelectList(conductores, "Id", "nombreCompleto");
             return View();
@@ -58,7 +59,7 @@ namespace TaxiWeb.Controllers
             if (ModelState.IsValid)
             {
                 vehiculo.Placa = vehiculo.Placa.ToUpper();
-                db.Vehiculo.Add(vehiculo);                
+                db.Vehiculo.Add(vehiculo);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
