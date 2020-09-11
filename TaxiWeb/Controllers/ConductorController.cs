@@ -17,6 +17,14 @@ namespace TaxiWeb.Controllers
         // GET: Conductor
         public ActionResult Index()
         {
+            //var lista = db.Conductor.Where(q => q.Nombre.StartsWith("E"));
+            //var fechaMin = db.Conductor.Min(q => q.FechaNacimiento);
+            //var lista = (from cond in db.Conductor
+            //             where fechaMin == cond.FechaNacimiento
+            //             select cond);
+            //var lista = (from cond in db.Conductor
+            //             join vehic in db.Vehiculo on cond.Id equals vehic.IdConductor
+            //             select cond);
             return View(db.Conductor.ToList());
         }
 
