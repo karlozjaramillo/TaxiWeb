@@ -18,8 +18,8 @@ namespace TaxiWeb.Models
         public long IdConductor { get; set; }
         public System.DateTime FechaClase { get; set; }
         public string NombreInstructor { get; set; }
-        public string HoraInicio { get; set; }
-        public string HoraFin { get; set; }
+        public System.TimeSpan HoraInicio { get; set; }
+        public System.TimeSpan HoraFin { get; set; }
     
         public virtual Conductor Conductor { get; set; }
     }
