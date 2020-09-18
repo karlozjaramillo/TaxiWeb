@@ -17,14 +17,31 @@ namespace TaxiWeb.Controllers
         // GET: Conductor
         public ActionResult Index()
         {
+            // EJEMPLO LINQ
             //var lista = db.Conductor.Where(q => q.Nombre.StartsWith("E"));
             //var fechaMin = db.Conductor.Min(q => q.FechaNacimiento);
-            //var lista = (from cond in db.Conductor
-            //             where fechaMin == cond.FechaNacimiento
-            //             select cond);
-            //var lista = (from cond in db.Conductor
-            //             join vehic in db.Vehiculo on cond.Id equals vehic.IdConductor
-            //             select cond);
+            //var lista = (from conductor in db.Conductor
+            //             where fechaMin == conductor.FechaNacimiento
+            //             select conductor);
+            //var lista = (from conductor in db.Conductor
+            //             join vehiculo in db.Vehiculo on conductor.Id equals vehiculo.IdConductor
+            //             select conductor);
+
+            // -----------------------------------------------------
+            // EJERCICIOS LINQ:
+
+            // Conductores cuya licencia de conducción ya venció.
+            //var licenciaVencida = db.Conductor.Where(v => v.ExpiracionLicencia < DateTime.Now);
+            //return View(licenciaVencida.ToList());
+
+            // Conductores con licencia de conducción próxima a vencer (rango de X días).
+            //var fechaActual = DateTime.Now;
+            //var fechaMaxima = fechaActual.AddDays(10);
+            //var proximaVencer = db.Conductor.Where(p => p.ExpiracionLicencia > fechaActual
+            //&& p.ExpiracionLicencia < fechaMaxima);
+            //return View(proximaVencer.ToList());
+            // -----------------------------------------------------
+
             return View(db.Conductor.ToList());
         }
 

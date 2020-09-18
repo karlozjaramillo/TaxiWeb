@@ -18,6 +18,17 @@ namespace TaxiWeb.Controllers
         public ActionResult Index()
         {
             var clase = db.Clase.Include(c => c.Conductor);
+
+            // Muestre los concutores que toman clase entre las 5 y las 12.
+            //var horaInicio = new TimeSpan(5, 0, 0);
+            //var horaFin = new TimeSpan(12, 0, 0);
+
+            //clase = (from clasesita in clase
+            //         where clasesita.HoraInicio >= horaInicio
+            //         && clasesita.HoraFin <= horaFin
+            //         select clasesita);
+
+
             return View(clase.ToList());
         }
 

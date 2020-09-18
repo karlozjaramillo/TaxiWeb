@@ -16,8 +16,13 @@ namespace TaxiWeb.Controllers
 
         // GET: Vehiculo
         public ActionResult Index()
-        {
+        {            
             var vehiculo = db.Vehiculo.Include(v => v.Conductor);
+
+            //Seleccionar el vehículo con la placa más alta (según su valor Alfanumérico).
+            //var placa = vehiculo.Max(v => v.Placa);
+            //vehiculo = vehiculo.Where(v => v.Placa == placa);
+
             return View(vehiculo.ToList());
         }
 

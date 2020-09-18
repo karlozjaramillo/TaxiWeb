@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
 using TaxiWeb.Models;
@@ -17,6 +18,33 @@ namespace TaxiWeb.Controllers
         // GET: Afiliacion
         public ActionResult Index()
         {
+            // -----------------------------------------------------
+            // EJERCICIOS LINQ
+            //Según un rango de fechas, indicar las afiliaciones del mes que más se hayan registrado afiliados.
+            //var fechaInicio = new DateTime(2020,1,1);
+            //var fechaFin = new DateTime(2020,12,31);
+
+            //var afiliacionesAgrupadas = (from afiliado in db.Afiliacion
+            //                             where afiliado.FechaRadicado >= fechaInicio
+            //                             && afiliado.FechaRadicado <= fechaFin
+            //                             group afiliado by afiliado.FechaRadicado.Month into afiliadoGrupo
+            //                             select new
+            //                             {
+            //                                 Mes = afiliadoGrupo.Key,
+            //                                 Afiliados = afiliadoGrupo,
+            //                                 Cont = afiliadoGrupo.Count()
+            //                             });
+
+            //var max = afiliacionesAgrupadas.Max(a => a.Cont);
+            //var lista = afiliacionesAgrupadas.Where(a => a.Cont == max).Select(a => a.Afiliados).FirstOrDefault();
+
+
+            //Forma manual para mostrar el mes 9.
+            //var afiliaciones = afiliacionesAgrupadas.Where(a => a.Key == 9).FirstOrDefault();
+
+            //return View(lista.ToList());
+            // -----------------------------------------------------
+
             return View(db.Afiliacion.ToList());
         }
 
