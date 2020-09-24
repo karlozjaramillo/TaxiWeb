@@ -42,7 +42,18 @@ namespace TaxiWeb.Controllers
             //return View(proximaVencer.ToList());
             // -----------------------------------------------------
 
-            return View(db.Conductor.ToList());
+            // Listar los conductores que no hayan pasado previamente por la Afiliación.
+            var afiliado = from conductor in db.Conductor
+                           join afilia in db.Afiliacion
+                           on conductor.Cedula equals afilia.Cedula
+                           select conductor.Cedula;
+
+            var lista = from cond in db.Conductor
+                        where !(afiliado).Contains(cond.Cedula)
+                        select cond;
+
+            return View(lista.ToList());
+            //return View(db.Conductor.ToList());
         }
 
         // GET: Conductor/Details/5

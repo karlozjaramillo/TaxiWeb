@@ -19,7 +19,7 @@ namespace TaxiWeb.Controllers
         {
             var clase = db.Clase.Include(c => c.Conductor);
 
-            // Muestre los concutores que toman clase entre las 5 y las 12.
+            // Muestre los conductores que toman clase entre las 5 y las 12.
             //var horaInicio = new TimeSpan(5, 0, 0);
             //var horaFin = new TimeSpan(12, 0, 0);
 
@@ -28,8 +28,11 @@ namespace TaxiWeb.Controllers
             //         && clasesita.HoraFin <= horaFin
             //         select clasesita);
 
+            // Listar las clases ordenadas ascendentemente por hora de inicio y fin.
+            var claseOrdenada = clase.OrderBy(c => c.HoraInicio);
 
-            return View(clase.ToList());
+            //return View(clase.ToList());
+            return View(claseOrdenada.ToList());
         }
 
         // GET: Clase/Details/5
