@@ -240,6 +240,7 @@
     <Content Include="Views\Clase\Details.cshtml" />
     <Content Include="Views\Clase\Edit.cshtml" />
     <Content Include="Views\Clase\Index.cshtml" />
+    <Content Include="Views\Home\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
