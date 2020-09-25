@@ -39,6 +39,14 @@
           <Property Name="LicenciaConduccion" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="ExpiracionLicencia" Type="date" Nullable="false" />
         </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Usuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Vehiculo">
           <Key>
             <PropertyRef Name="Id" />
@@ -78,6 +86,7 @@
           <EntitySet Name="Afiliacion" EntityType="Self.Afiliacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Clase" EntityType="Self.Clase" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Conductor" EntityType="Self.Conductor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vehiculo" EntityType="Self.Vehiculo" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Clase_Conductor" Association="Self.FK_Clase_Conductor">
             <End Role="Conductor" EntitySet="Conductor" />
@@ -143,6 +152,7 @@
             <End Role="Conductor" EntitySet="Conductor" />
             <End Role="Clase" EntitySet="Clase" />
           </AssociationSet>
+          <EntitySet Name="Usuarios" EntityType="TaxiWebModel.Usuarios" />
         </EntityContainer>
         <EntityType Name="Afiliacion">
           <Key>
@@ -163,8 +173,8 @@
           <Property Name="IdConductor" Type="Int64" Nullable="false" />
           <Property Name="FechaClase" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="NombreInstructor" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="HoraInicio" Type="Time" Nullable="false" />
-          <Property Name="HoraFin" Type="Time" Nullable="false" />
+          <Property Name="HoraInicio" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="HoraFin" Type="Time" Nullable="false" Precision="7" />
           <NavigationProperty Name="Conductor" Relationship="TaxiWebModel.FK_Clase_Conductor" FromRole="Clase" ToRole="Conductor" />
         </EntityType>
         <Association Name="FK_Clase_Conductor">
@@ -179,6 +189,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -230,6 +248,15 @@
                 <ScalarProperty Name="NombreInstructor" ColumnName="NombreInstructor" />
                 <ScalarProperty Name="FechaClase" ColumnName="FechaClase" />
                 <ScalarProperty Name="IdConductor" ColumnName="IdConductor" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="TaxiWebModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

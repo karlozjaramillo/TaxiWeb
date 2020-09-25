@@ -161,6 +161,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TaxiModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Usuarios.cs">
+      <DependentUpon>TaxiModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Vehiculo.cs">
       <DependentUpon>TaxiModel.tt</DependentUpon>
     </Compile>

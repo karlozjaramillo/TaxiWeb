@@ -34,6 +34,14 @@
     <Property Name="LicenciaConduccion" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="ExpiracionLicencia" Type="date" Nullable="false" />
   </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Usuario" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
   <EntityType Name="Vehiculo">
     <Key>
       <PropertyRef Name="Id" />
@@ -73,6 +81,7 @@
     <EntitySet Name="Afiliacion" EntityType="Self.Afiliacion" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Clase" EntityType="Self.Clase" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Conductor" EntityType="Self.Conductor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Vehiculo" EntityType="Self.Vehiculo" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Clase_Conductor" Association="Self.FK_Clase_Conductor">
       <End Role="Conductor" EntitySet="Conductor" />
