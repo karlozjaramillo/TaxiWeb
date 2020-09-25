@@ -27,12 +27,15 @@ namespace TaxiWeb.Controllers
             //         where clasesita.HoraInicio >= horaInicio
             //         && clasesita.HoraFin <= horaFin
             //         select clasesita);
+            //-----------------------------------------------------------------
 
             // Listar las clases ordenadas ascendentemente por hora de inicio y fin.
-            var claseOrdenada = clase.OrderBy(c => c.HoraInicio);
+            //var claseOrdenada = clase.OrderBy(c => c.HoraInicio);
 
-            //return View(clase.ToList());
-            return View(claseOrdenada.ToList());
+            //return View(claseOrdenada.ToList());
+            //-----------------------------------------------------------------------
+
+            return View(clase.ToList());
         }
 
         // GET: Clase/Details/5

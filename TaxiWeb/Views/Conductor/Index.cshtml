@@ -29,36 +29,52 @@
         <th>
             @Html.DisplayName("Expiración de Licencia")
         </th>
+        <th>
+            Placa Vehículo
+        </th>
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.Nombre)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Apellido)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Cedula)
-    </td>
-    <td>
-        @item.FechaNacimiento.ToString("dd/MM/yyyy")
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.LicenciaConduccion)
-    </td>
-    <td>
-        @item.ExpiracionLicencia.ToString("dd/MM/yyyy")
-    </td>
-    <td id="icons">
-        @Html.ActionLink("create", "Edit", new { id = item.Id }, new { @class = "material-icons" })
-        @Html.ActionLink("list", "Details", new { id = item.Id }, new { @class = "material-icons" })
-        @Html.ActionLink("delete", "Delete", new { id = item.Id }, new { @class = "material-icons" })
-    </td>
-</tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cedula)
+            </td>
+            <td>
+                @item.FechaNacimiento.ToString("dd/MM/yyyy")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LicenciaConduccion)
+            </td>
+            <td>
+                @item.ExpiracionLicencia.ToString("dd/MM/yyyy")
+            </td>
+            <td>
+                @for (var i = 0; i < item.Vehiculo.Count; i++)
+                {
+                    var vehiculo = item.Vehiculo.ElementAt(i);
+                    var placa = vehiculo.Placa;
+
+                    if (i < (item.Vehiculo.Count - 1))
+                    {
+                        placa += ", ";
+                    }
+                    <span>@placa</span>
+                }
+            </td>
+            <td id="icons">
+                @Html.ActionLink("create", "Edit", new { id = item.Id }, new { @class = "material-icons" })
+                @Html.ActionLink("list", "Details", new { id = item.Id }, new { @class = "material-icons" })
+                @Html.ActionLink("delete", "Delete", new { id = item.Id }, new { @class = "material-icons" })
+            </td>
+        </tr>
     }
 
 </table>

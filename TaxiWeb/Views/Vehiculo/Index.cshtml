@@ -44,7 +44,7 @@
             @Html.DisplayFor(modelItem => item.Color)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Conductor.Nombre)
+            @item.Conductor.Nombre @item.Conductor.Apellido
         </td>
         <td id="icons">
             @Html.ActionLink("create", "Edit", new { id = item.Id }, new { @class = "material-icons" })

@@ -43,17 +43,37 @@ namespace TaxiWeb.Controllers
             // -----------------------------------------------------
 
             // Listar los conductores que no hayan pasado previamente por la Afiliación.
-            var afiliado = from conductor in db.Conductor
-                           join afilia in db.Afiliacion
-                           on conductor.Cedula equals afilia.Cedula
-                           select conductor.Cedula;
+            //var afiliado = from conductor in db.Conductor
+            //               join afilia in db.Afiliacion
+            //               on conductor.Cedula equals afilia.Cedula
+            //               select conductor.Cedula;
 
-            var lista = from cond in db.Conductor
-                        where !(afiliado).Contains(cond.Cedula)
-                        select cond;
+            //var lista = from cond in db.Conductor
+            //            where !(afiliado).Contains(cond.Cedula)
+            //            select cond;
 
-            return View(lista.ToList());
-            //return View(db.Conductor.ToList());
+            //return View(lista.ToList());
+            // -----------------------------------------------------
+
+            // Listar conductores que aparecen mínimo 2 veces inscritos en clases.
+            //var clasesAgrupadas = (from clase in db.Clase
+            //                       group clase by clase.IdConductor into grupoClases
+            //                       select grupoClases);
+
+            //clasesAgrupadas = clasesAgrupadas.Where(c => c.Count() >= 2);
+
+            //var idConductores = clasesAgrupadas.Select(cA => cA.Key);
+
+            //var lista = (from conductor in db.Conductor
+            //             where idConductores.Contains(conductor.Id)
+            //             select conductor);
+
+            //return View(lista.ToList());
+            // -----------------------------------------------------
+
+            var lista = db.Conductor.ToList();
+
+            return View(db.Conductor.ToList());
         }
 
         // GET: Conductor/Details/5
