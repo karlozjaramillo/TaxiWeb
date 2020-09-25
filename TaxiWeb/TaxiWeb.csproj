@@ -145,6 +145,7 @@
     <Compile Include="Models\Conductor.cs">
       <DependentUpon>TaxiModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ConductorAfiliacion.cs" />
     <Compile Include="Models\TaxiModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

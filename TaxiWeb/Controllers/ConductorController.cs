@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using TaxiWeb.Models;
 
@@ -71,9 +67,27 @@ namespace TaxiWeb.Controllers
             //return View(lista.ToList());
             // -----------------------------------------------------
 
-            var lista = db.Conductor.ToList();
+            var lista = (from conductor in db.Conductor
+                         join afiliacion in db.Afiliacion
+                         on conductor.Cedula equals afiliacion.Cedula
+                         select new ConductorAfiliacion
+                         {
+                             Conductor = conductor,
+                             Radicado = afiliacion.Id
+                         }).Union(from conductor in db.Conductor
+                                  join afiliacion in db.Afiliacion
+                                  on conductor.Cedula equals afiliacion.Cedula into afilia
+                                  from joinAfiliacion in afilia.DefaultIfEmpty()
+                                  where joinAfiliacion == null
+                                  select new ConductorAfiliacion
+                                  {
+                                      Conductor = conductor,
+                                      Radicado = 0
+                                  });
 
-            return View(db.Conductor.ToList());
+            return View(lista.ToList());
+
+            //return View(db.Conductor.ToList());
         }
 
         // GET: Conductor/Details/5
