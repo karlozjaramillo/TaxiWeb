@@ -12,10 +12,10 @@ namespace TaxiWeb.Controllers
         private TaxiWebEntities db = new TaxiWebEntities();
         public ActionResult Index()
         {
-            var usuario = db.Usuarios.ToList();
             return View();
         }
 
+        [HttpPost]
         public ActionResult Login(string usuario, string password)
         {
             var comparacion = db.Usuarios.Where(u => u.Usuario == usuario && u.Password == password).FirstOrDefault();
