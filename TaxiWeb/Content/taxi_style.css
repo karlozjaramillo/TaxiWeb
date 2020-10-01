@@ -48,3 +48,8 @@
 a.material-icons {
     color: black;
 }
+
+.responsiveImage {
+    max-width: 100%;
+    height: auto;
+}

@@ -175,6 +175,8 @@
     <Content Include="Content\taxi_style.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Images\enConstruccion.png" />
+    <Content Include="Images\errorLogin.png" />
     <Content Include="Images\loginBackground.jpg" />
     <Content Include="Images\city1.png" />
     <Content Include="Images\city2.png" />
