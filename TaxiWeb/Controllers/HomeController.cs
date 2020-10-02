@@ -24,20 +24,28 @@ namespace TaxiWeb.Controllers
         [HttpPost]
         public ActionResult Login(string usuario, string password)
         {
-            var comparacion = db.Usuarios.Where(u =>
+            var usuarios = db.Usuarios.Where(u =>
                 u.Usuario.Equals(usuario) &&
                 u.Password.Equals(password)).FirstOrDefault();
 
-            if (comparacion != null)
+            if (usuarios != null)
             {
-                FormsAuthentication.SetAuthCookie(comparacion.Usuario, false);
-                ViewBag.Usuario = "Bienvenido " + comparacion.Usuario;
-                return View("Index");
+                FormsAuthentication.SetAuthCookie(usuarios.Usuario, false);
+                HttpContext.Session.Add("usuario", usuarios.Usuario);
+                ViewBag.Usuario = "Bienvenido " + usuarios.Usuario;
+                return RedirectToAction("Index");
             }
             else
             {
-                return View("Error");
+                return RedirectToAction("Error");
             }
+        }
+
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+            return RedirectToAction("Index");
         }
     }
 }

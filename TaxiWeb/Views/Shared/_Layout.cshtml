@@ -1,4 +1,14 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var usuarioLogado = Context.User.Identity.IsAuthenticated;
+    var usuarioSesion = Context.Session["usuario"];
+    var nombreUsuario = string.Empty;
+
+    if (usuarioSesion != null)
+    {
+        nombreUsuario = usuarioSesion.ToString();
+    }
+}
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -20,15 +30,27 @@
                 <img src="~/Images/logo taxi.png" />
             </a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li id="crearNuevo">@ViewBag.Usuario</li>
+                @*<li class="black-text">@ViewBag.Usuario</li>*@
+                @if (usuarioLogado)
+                {
+                    <li class="black-text">Bienvenido @nombreUsuario</li>
+                }
                 <li data-target="slide-out" class="sidenav-trigger">
                     <a class="tooltipped" data-position="bottom" data-tooltip="Presióname" href="#">
                         <i class="material-icons">apps</i>
                     </a>
                 </li>
-                <li>@Html.ActionLink("Conductor", "Index", "Conductor")</li>
-                <li>@Html.ActionLink("Vehículo", "Index", "Vehiculo")</li>
-                <li>@Html.ActionLink("Afiliarme", "Index", "Afiliacion")</li>
+                @if (usuarioLogado)
+                {
+                    if (nombreUsuario.Equals("admin@prueba"))
+                    {
+                        <li>@Html.ActionLink("Conductor", "Index", "Conductor")</li>
+                        <li>@Html.ActionLink("Vehículo", "Index", "Vehiculo")</li>
+                        <li>@Html.ActionLink("Clase", "Index", "Clase")</li>
+                        <li>@Html.ActionLink("Afiliarme", "Index", "Afiliacion")</li>
+                    }
+                    <li>@Html.ActionLink("Cerrar Sesión", "Logout", "Home")</li>
+                }
             </ul>
         </div>
     </nav>
@@ -41,13 +63,27 @@
                 <br /><br />
             </div>
         </li>
-        <li>@Html.ActionLink("Afiliarme", "Index", "Afiliacion")</li>
         <li><div class="divider"></div></li>
-        <li><a class="modal-trigger" href="#modal1">Iniciar Sesión</a></li>
+        @if (usuarioLogado)
+        {
+            <li>@Html.ActionLink("Cerrar Sesión", "Logout", "Home")</li>
+        }
+        else
+        {
+            <li><a class="modal-trigger" href="#modal1">Iniciar Sesión</a></li>
+        }
         <li><div class="divider"></div></li>
-        <li>@Html.ActionLink("Conductor", "Index", "Conductor")</li>
-        <li>@Html.ActionLink("Vehículo", "Index", "Vehiculo")</li>
-        <li>@Html.ActionLink("Clase", "Index", "Clase")</li>
+        @if (usuarioLogado)
+        {
+            if (nombreUsuario.Equals("admin@prueba"))
+            {
+                <li>@Html.ActionLink("Conductor", "Index", "Conductor")</li>
+                <li>@Html.ActionLink("Vehículo", "Index", "Vehiculo")</li>
+                <li>@Html.ActionLink("Clase", "Index", "Clase")</li>
+                <li>@Html.ActionLink("Afiliarme", "Index", "Afiliacion")</li>
+            }
+        }
+
     </ul>
     <div id="modal1" class="modal">
         <div class="modal-content">
@@ -66,7 +102,7 @@
                 </div>
                 <div class="row">
                     <div>
-                        <input id="btnModal" class="btn" type="submit" name="name" value="Ingresar" />
+                        <button id="btnModal" class="btn" type="submit">Ingresar</button>
                     </div>
                 </div>
             }
