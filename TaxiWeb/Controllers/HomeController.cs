@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using TaxiWeb.Models;
 
 namespace TaxiWeb.Controllers
@@ -29,6 +30,7 @@ namespace TaxiWeb.Controllers
 
             if (comparacion != null)
             {
+                FormsAuthentication.SetAuthCookie(comparacion.Usuario, false);
                 ViewBag.Usuario = "Bienvenido " + comparacion.Usuario;
                 return View("Index");
             }

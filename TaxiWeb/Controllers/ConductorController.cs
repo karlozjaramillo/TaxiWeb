@@ -6,6 +6,7 @@ using TaxiWeb.Models;
 
 namespace TaxiWeb.Controllers
 {
+    [Authorize]
     public class ConductorController : Controller
     {
         private TaxiWebEntities db = new TaxiWebEntities();

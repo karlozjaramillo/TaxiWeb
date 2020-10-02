@@ -10,6 +10,7 @@ using TaxiWeb.Models;
 
 namespace TaxiWeb.Controllers
 {
+    [Authorize]
     public class ClaseController : Controller
     {
         private TaxiWebEntities db = new TaxiWebEntities();
