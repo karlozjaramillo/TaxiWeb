@@ -15,13 +15,21 @@ namespace TaxiWeb.Controllers
             return View();
         }
 
+        public ActionResult Error()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult Login(string usuario, string password)
         {
-            var comparacion = db.Usuarios.Where(u => u.Usuario == usuario && u.Password == password).FirstOrDefault();
+            var comparacion = db.Usuarios.Where(u =>
+                u.Usuario.Equals(usuario) &&
+                u.Password.Equals(password)).FirstOrDefault();
 
             if (comparacion != null)
             {
+                ViewBag.Usuario = "Bienvenido " + comparacion.Usuario;
                 return View("Index");
             }
             else
