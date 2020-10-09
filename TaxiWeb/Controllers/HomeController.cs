@@ -22,22 +22,22 @@ namespace TaxiWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(string usuario, string password)
+        public string Login(string usuario, string password)
         {
-            var usuarios = db.Usuarios.Where(u =>
+            var usuarioDb = db.Usuarios.Where(u =>
                 u.Usuario.Equals(usuario) &&
                 u.Password.Equals(password)).FirstOrDefault();
 
-            if (usuarios != null)
+            if (usuarioDb != null)
             {
-                FormsAuthentication.SetAuthCookie(usuarios.Usuario, false);
-                HttpContext.Session.Add("usuario", usuarios.Usuario);
-                ViewBag.Usuario = "Bienvenido " + usuarios.Usuario;
-                return RedirectToAction("Index");
+                FormsAuthentication.SetAuthCookie(usuarioDb.Usuario, false);
+                HttpContext.Session.Add("usuario", usuarioDb.Usuario);
+
+                return Newtonsoft.Json.JsonConvert.SerializeObject(usuarioDb);
             }
             else
             {
-                return RedirectToAction("Error");
+                return "{\"error\":\"El usuario no existe\"}";
             }
         }
 

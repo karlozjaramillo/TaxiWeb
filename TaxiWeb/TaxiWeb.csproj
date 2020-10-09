@@ -195,6 +195,7 @@
     <Content Include="Scripts\general.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\loginAjax.js" />
     <Content Include="Scripts\materialize.js" />
     <Content Include="Scripts\materialize.min.js" />
     <Content Include="Web.config" />
