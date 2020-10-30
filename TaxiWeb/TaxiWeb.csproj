@@ -192,6 +192,7 @@
       <DependentUpon>TaxiModel.edmx</DependentUpon>
       <LastGenOutput>TaxiModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\conductor.js" />
     <Content Include="Scripts\general.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

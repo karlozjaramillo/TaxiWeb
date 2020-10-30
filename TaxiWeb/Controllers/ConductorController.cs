@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using Newtonsoft.Json;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
@@ -106,6 +107,20 @@ namespace TaxiWeb.Controllers
             return View(conductor);
         }
 
+        public string VerConductor(long id)
+        {
+            Conductor conductor = db.Conductor.Find(id);
+            if (conductor != null)
+            {
+                return JsonConvert.SerializeObject(conductor, new JsonSerializerSettings
+                {
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                });
+            }
+            else
+                return "{\"error\": \"No existe el conductor\"}";
+        }
+
         // GET: Conductor/Create
         public ActionResult Create()
         {
@@ -184,6 +199,18 @@ namespace TaxiWeb.Controllers
             db.Conductor.Remove(conductor);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public string EliminarConductor(long id)
+        {
+            Conductor conductor = db.Conductor.Find(id);
+            db.Conductor.Remove(conductor);
+            db.SaveChanges();
+
+            return JsonConvert.SerializeObject(conductor, new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            });
         }
 
         protected override void Dispose(bool disposing)

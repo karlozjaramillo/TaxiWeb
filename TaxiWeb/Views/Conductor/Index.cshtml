@@ -4,6 +4,7 @@
 @{
     ViewBag.Title = "Conductores";
 }
+<script src="~/Scripts/conductor.js"></script>
 
 <h2>@ViewBag.Title</h2>
 
@@ -82,9 +83,21 @@
             <td id="icons">
                 @Html.ActionLink("create", "Edit", new { id = item.Conductor.Id }, new { @class = "material-icons" })
                 @Html.ActionLink("list", "Details", new { id = item.Conductor.Id }, new { @class = "material-icons" })
-                @Html.ActionLink("delete", "Delete", new { id = item.Conductor.Id }, new { @class = "material-icons" })
+                @*@Html.ActionLink("delete", "Delete", new { id = item.Conductor.Id }, new { @class = "material-icons" })*@
+                <a href="#" class="material-icons" onclick="mostrarModal(@item.Conductor.Id)">delete</a>
             </td>
         </tr>
     }
 
 </table>
+
+<div id="modalEliminar" class="modal">
+    <div class="modal-content">
+        <h4>¿Estás seguro que deseas eliminar este registro?</h4>
+        <div id="contenido"></div>
+        <input type="hidden" id="idConductorEliminar" />
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat" onclick="eliminarConductor()">Eliminar</a>
+    </div>
+</div>
