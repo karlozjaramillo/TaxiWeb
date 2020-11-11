@@ -8,87 +8,95 @@
 
 <h2>@ViewBag.Title</h2>
 
-<p>
-    <a class="black-text" href=@Url.Action("Create", "Conductor")><i class="medium material-icons">add_circle</i></a>
-</p>
+<div class="row">
+    <div class="col s2">
+        <a class="black-text" href=@Url.Action("Create", "Conductor")><i class="medium material-icons">add_circle</i></a>
+    </div>
+    <div class="col s4 input-field">
+        <label for="Filtrar">Filtrar por Nombre</label>
+        <input type="text" name="Filtrar" id="Filtrar" />
+    </div>
+</div>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Conductor.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Conductor.Apellido)
-        </th>
-        <th>
-            @Html.DisplayName("Cédula")
-        </th>
-        <th>
-            @Html.DisplayName("Fecha de Nacimiento")
-        </th>
-        <th>
-            @Html.DisplayName("Licencia de Conducción")
-        </th>
-        <th>
-            @Html.DisplayName("Expiración de Licencia")
-        </th>
-        <th>
-            Placa Vehículo
-        </th>
-        <th>
-            # @Html.DisplayNameFor(model => model.Radicado)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+    <thead>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Conductor.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Conductor.Apellido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Conductor.Cedula)
-            </td>
-            <td>
-                @item.Conductor.FechaNacimiento.ToString("dd/MM/yyyy")
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Conductor.LicenciaConduccion)
-            </td>
-            <td>
-                @item.Conductor.ExpiracionLicencia.ToString("dd/MM/yyyy")
-            </td>
-            <td>
-                @for (var i = 0; i < item.Conductor.Vehiculo.Count; i++)
-                {
-                    var vehiculo = item.Conductor.Vehiculo.ElementAt(i);
-                    var placa = vehiculo.Placa;
-
-                    if (i < (item.Conductor.Vehiculo.Count - 1))
-                    {
-                        placa += ", ";
-                    }
-                    <span>@placa</span>
-                }
-            </td>
-            <td>
-                @if (item.Radicado != 0)
-                {
-                    @Html.DisplayFor(modelItem => item.Radicado)
-                }
-            </td>
-            <td id="icons">
-                @Html.ActionLink("create", "Edit", new { id = item.Conductor.Id }, new { @class = "material-icons" })
-                @Html.ActionLink("list", "Details", new { id = item.Conductor.Id }, new { @class = "material-icons" })
-                @*@Html.ActionLink("delete", "Delete", new { id = item.Conductor.Id }, new { @class = "material-icons" })*@
-                <a href="#" class="material-icons" onclick="mostrarModal(@item.Conductor.Id)">delete</a>
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.Conductor.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Conductor.Apellido)
+            </th>
+            <th>
+                @Html.DisplayName("Cédula")
+            </th>
+            <th>
+                @Html.DisplayName("Fecha de Nacimiento")
+            </th>
+            <th>
+                @Html.DisplayName("Licencia de Conducción")
+            </th>
+            <th>
+                @Html.DisplayName("Expiración de Licencia")
+            </th>
+            <th>
+                Placa Vehículo
+            </th>
+            <th>
+                # @Html.DisplayNameFor(model => model.Radicado)
+            </th>
+            <th></th>
         </tr>
-    }
+    </thead>
+    <tbody id="listaConductores">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Conductor.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Conductor.Apellido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Conductor.Cedula)
+                </td>
+                <td>
+                    @item.Conductor.FechaNacimiento.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Conductor.LicenciaConduccion)
+                </td>
+                <td>
+                    @item.Conductor.ExpiracionLicencia.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    @for (var i = 0; i < item.Conductor.Vehiculo.Count; i++)
+                    {
+                        var vehiculo = item.Conductor.Vehiculo.ElementAt(i);
+                        var placa = vehiculo.Placa;
 
+                        if (i < (item.Conductor.Vehiculo.Count - 1))
+                        {
+                            placa += ", ";
+                        }
+                        <span>@placa</span>
+                    }
+                </td>
+                <td>
+                    @if (item.Radicado != 0)
+                    {
+                        @Html.DisplayFor(modelItem => item.Radicado)
+                    }
+                </td>
+                <td id="icons">
+                    @Html.ActionLink("create", "Edit", new { id = item.Conductor.Id }, new { @class = "material-icons" })
+                    @Html.ActionLink("list", "Details", new { id = item.Conductor.Id }, new { @class = "material-icons" })
+                    @*@Html.ActionLink("delete", "Delete", new { id = item.Conductor.Id }, new { @class = "material-icons" })*@
+                    <a href="#" class="material-icons" onclick="mostrarModal(@item.Conductor.Id)">delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
 
 <div id="modalEliminar" class="modal">

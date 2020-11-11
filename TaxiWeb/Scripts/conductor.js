@@ -1,4 +1,13 @@
-﻿function mostrarModal(idConductor) {
+﻿$(document).ready(function () {
+    $("#Filtrar").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#listaConductores tr").filter(function () {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+});
+
+function mostrarModal(idConductor) {
     $.ajax({
         "url": "http://localhost:58640/Conductor/VerConductor/" + idConductor,
         "type": "GET",
