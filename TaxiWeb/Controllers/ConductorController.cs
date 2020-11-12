@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -213,6 +214,14 @@ namespace TaxiWeb.Controllers
             });
         }
 
+        public string Listar()
+        {
+            return JsonConvert.SerializeObject(db.Conductor.ToList(), new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            });
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -221,5 +230,36 @@ namespace TaxiWeb.Controllers
             }
             base.Dispose(disposing);
         }
-    }
+
+        [HttpPost]
+        public string Crear(string cedula, string nombre, string apellido, DateTime fechaNacimiento, string licenciaConduccion, DateTime expiracionLicencia)
+        {
+            var maxId = db.Conductor.Max(x => x.Id);
+            var id = maxId + 1;
+            Conductor conductor = new Conductor
+            {
+                Id = id,
+                Cedula = cedula,
+                Nombre = nombre,
+                Apellido = apellido,
+                FechaNacimiento = fechaNacimiento,
+                LicenciaConduccion = licenciaConduccion,
+                ExpiracionLicencia = expiracionLicencia
+            };
+            if (ModelState.IsValid)
+            {
+                db.Conductor.Add(conductor);
+                db.SaveChanges();
+            }
+
+            if (conductor != null)
+
+                return JsonConvert.SerializeObject(conductor, new JsonSerializerSettings
+                {
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                });
+            else
+                return "{\"error\":\"No se pueden guardar los datos\"}";
+        }
+    }    
 }

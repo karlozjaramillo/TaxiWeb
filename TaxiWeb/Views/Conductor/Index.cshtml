@@ -10,7 +10,7 @@
 
 <div class="row">
     <div class="col s2">
-        <a class="black-text" href=@Url.Action("Create", "Conductor")><i class="medium material-icons">add_circle</i></a>
+        <a class="black-text" href="#" onclick="abrirModal()"><i class="medium material-icons">add_circle</i></a>
     </div>
     <div class="col s4 input-field">
         <label for="Filtrar">Filtrar por Nombre</label>
@@ -48,7 +48,7 @@
         </tr>
     </thead>
     <tbody id="listaConductores">
-        @foreach (var item in Model)
+        @*@foreach (var item in Model)
         {
             <tr>
                 <td>
@@ -91,11 +91,11 @@
                 <td id="icons">
                     @Html.ActionLink("create", "Edit", new { id = item.Conductor.Id }, new { @class = "material-icons" })
                     @Html.ActionLink("list", "Details", new { id = item.Conductor.Id }, new { @class = "material-icons" })
-                    @*@Html.ActionLink("delete", "Delete", new { id = item.Conductor.Id }, new { @class = "material-icons" })*@
+                    @Html.ActionLink("delete", "Delete", new { id = item.Conductor.Id }, new { @class = "material-icons" })
                     <a href="#" class="material-icons" onclick="mostrarModal(@item.Conductor.Id)">delete</a>
                 </td>
             </tr>
-        }
+        }*@
     </tbody>
 </table>
 
@@ -107,5 +107,44 @@
     </div>
     <div class="modal-footer">
         <a href="#!" class="modal-close waves-effect waves-green btn-flat" onclick="eliminarConductor()">Eliminar</a>
+    </div>
+</div>
+
+<div id="modalCrear" class="modal">
+    <div class="modal-content">
+        <h4>Crear Conductor</h4>
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="cedula" type="text" class="validate" name="cedula">
+                <label for="cedula">Cédula</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="fechaNacimiento" type="text" class="datepicker" name="fechaNacimiento">
+                <label for="fechaNacimiento">Fecha de Nacimiento</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="nombre" type="text" class="validate" name="nombre">
+                <label for="nombre">Nombre</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="apellido" type="text" class="validate" name="apellido">
+                <label for="apellido">Apellido</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="licenciaConduccion" type="text" class="validate" name="licenciaConduccion">
+                <label for="licenciaConduccion">Licencia de Conducción</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="fechaExpiracion" type="text" class="datepicker" name="fechaExpiracion">
+                <label for="fechaExpiracion">Fecha de Expiración</label>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat" onclick="crear()">Crear</a>
     </div>
 </div>
